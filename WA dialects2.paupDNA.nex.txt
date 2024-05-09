@@ -1,0 +1,57 @@
+#NEXUS
+
+BEGIN DATA;
+DIMENSIONS ntax=33 NCHAR=62;
+FORMAT DATATYPE=DNA GAP=? MISSING=- interleave=yes;
+MATRIX
+
+
+Adapazar              ---------------------------------------------------------C----
+Akn                   ---------------------------------------------------------C----
+Arabkir               ----C----------------------------------------------------C----
+Artial                C-CC-ACAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAACA-AAAAAAA-AAA-----
+Constantinople        C-AC-AAACCAAACAAAAAACAAAAAAACAAAAAAAAAAAAAAAA-AAAAAAA-AAAC----
+Aslanbeg              CCAC-AAAAACCCCAAAAAACAAACAAAAAAAAAAAAACAAAAAA-AAAAAAA-AAACC---
+Nicomedia             ----------C---------------------------------------------------
+Zmurnia               C-CC-AACAAAACCAAAAAACCAAAAAAAAAAAAAAAAAAAAAAA-AAAAAAA-AAA-----
+Crimea                ---------------------------------------------------------C---C
+Kesaria               ---------------------------------------------------------C----
+Trabzon               ----C---------------------------------------C-----------------
+Hamshen               C-CA-CAAAAACACAAAAAACAAACAAAAAAAACAAAAAACAAAA-AACAAAACAAAC---C
+Hajin                 C-CC-AAAAAAAAAAAAACACAAAACAAAAAAAAACCACAAAAAA-AAAAAAA-ACA-----
+MarashZeytun          ----------------------------------------------------A----C----
+Svedia                C-CC-AACAAAAACAAAAAACAAAAAAAACAAAACAACCAAAAAA-AAAAAAC-AAAACA-C
+Kesab                 ----------C---------------------------------------------------
+Aramo                 ----------------------------------------------------C---------
+Beylan                -----------------------------------------------------------C--
+Sebastia              ----C---------------------------------------------------------
+Malatya               -------------------------------------------------------------C
+KharberdDersim        ---------------------------------------------------------C---C
+Karin                 C-AACCAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA-ACAAAAA-AAA----C
+Erznkay               C-AC-AAAAAAACCAAAAAACCACAAAAAAAAAACAAACAAAAAA-AAAAAAA-AAA----A
+Tigranakert           C--C-AAAAAAAACAAAACACCAAAAAAAAAAAAAAAAAAAAAAA-CCAAACA-AAC-----
+Mush                  C-CC-AAAAAAAAAAAAACACCAAACAAAAAAAAAAAAAAACAAA-CCAAACC-AAA--C--
+Sasun                 C-CC-AAAAAAAAAAAAACACCAAAACAAAAAAAACAAAAAAAAA-ACAAACA-AAA-----
+Van                   A--C-AAAAAAAAAAAAAAACCCAACAAAAAAAAAAAAAAAAAAACACAAAAACAAA---CA
+Moks                  ----------------------------------------------------C--------A
+Ozmi                  -------------------------------------------------------------A
+Khodorjur             -------------------------------------------------CC-----------
+Grabar                C-CAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAACAAAAAA-AAACCAC-AAAA----
+Middle                C-CCAAAAAAAACCAAAAAACAAAAAAAAAAAAAAAAACAAAAAA-AAAAAAC-ACAC----
+SWA                   C-ACAAAACAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA-AAAAAAA-AAAC----
+
+;
+
+END;
+Begin Paup;
+set crit=lik;
+lset clock=yes;
+charpartition types = morphological:1-62;
+set criterion=parsimony maxtrees=100 increase=no;
+hsearch start=stepwise addseq=random nreps=25 swap=tbr;
+filter best=yes;
+set maxtrees=100 increase=no;
+hsearch start=current swap=tbr hold=1 nbest=1000;
+Set AllowPunct=Yes
+q warnTsave=no;
+end;
